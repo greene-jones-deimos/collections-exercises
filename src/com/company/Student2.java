@@ -23,7 +23,10 @@ public class Student2 {
     }
 
     public void showGrades(){
-        grades.forEach(grade -> System.out.println(grade));
+        grades.forEach(grade -> System.out.print("| " + grade +" |"));
+    }
+    public int getGradeTotal(){
+        return grades.stream().reduce(0,(a,b)-> a +b);
     }
 //    public Double getGradeAverage(int index){
 //        if(grades.size() == index) return (double)(grades.get(index) / grades.size());
