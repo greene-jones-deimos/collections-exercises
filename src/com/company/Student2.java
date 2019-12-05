@@ -46,7 +46,7 @@ public class Student2 {
             System.out.print("Date in format YYYY/MM/DD: ");
             System.out.println();
             date = scan.nextLine();
-            System.out.print("Attendance in format (A|P): ");
+            System.out.print("  Attendance in format (A|P): ");
             attendanceCode = scan.nextLine();
             recordAttendance(date, attendanceCode);
 
@@ -60,6 +60,15 @@ public class Student2 {
         int absenseAmount = (int) attendance.values().stream().filter(a -> a.equalsIgnoreCase("p")).count();
         int percentage = (absenseAmount * 100) / totalDays;
         System.out.println("Attendance present percentage: " + percentage+"%");
+    }
+
+    public void
+    getAbsenceDays(){
+       attendance.forEach((key,value)-> {
+           if(value.equalsIgnoreCase("a"))
+               System.out.print("Absent: " + key + "| ");
+           System.out.println();
+       });
     }
 
     public String getName() {
