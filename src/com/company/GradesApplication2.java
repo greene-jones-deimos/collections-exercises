@@ -35,14 +35,15 @@ public class GradesApplication2 {
     }
     public static void
     seeMoreStudentInfo(HashMap<String, Student2>  hash){
-        System.out.print("Which user would you like to see more info on: ");
+        System.out.println("+++ USERS ++");
         hash.forEach((key, value)-> System.out.println(key));
+        System.out.print("Which user would you like to see more info on: ");
         String answer;
         while(true){
         answer = scan.nextLine();
         boolean validate = hash.containsKey(answer);
         if(validate) break;
-            System.out.println("Username not found, please try again");
+            System.out.print("No users with that username were found, please try again: ");
         }
         chooseStudent(answer, hash);
     }
@@ -52,17 +53,26 @@ public class GradesApplication2 {
         boolean validate = map.containsKey(username);
         if(validate) {
             Student2 student = map.get(username);
-            showInfo(student);
+            showInfo(student, map);
         }
         else System.out.println("Student Not Found");
 
     }
 
     public static void
-    showInfo(Student2 student){
+    showInfo(Student2 student, HashMap<String, Student2> hash){
+        System.out.println("Name: "+ student.getName());
         System.out.println("Average = " + student.getGradeAverage());
         System.out.println(":: GRADES ::");
         student.showGrades();
+        while (true){
+            System.out.print("Would you like to conitune?(y/n) ");
+            String answer = scan.nextLine();
+            System.out.println(answer);
+            if(answer.equalsIgnoreCase("n"))break;
+            seeMoreStudentInfo(hash);
+        }
+        System.out.println("Goodbye.");
 
     }
 
