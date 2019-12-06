@@ -18,7 +18,7 @@ public class GradesApplication2 {
             put("camilovescats", new Student2("Cami"));
         }};
 
-        //! add random grades
+        //! add random grades and random attendance
         for(Student2 student : students.values()){
             int date = 20;
             Random rando = new Random();
